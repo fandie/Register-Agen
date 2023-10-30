@@ -1,0 +1,38 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] Test Junior Web Dev</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/site.css" />
+</head>
+    <body>
+    <header>
+        <h2 class="logo" onclick="location.href='Index'">Logo</h2> <nav class="navigation">
+            <a id="homeLink" onclick="location.href='Index'">Home</a>
+            <a id="homeLink" onclick="location.href='aboutme'">About</a>
+            <a id="homeLink" onclick="location.href='test3'">Test</a>
+            <button class="btnLogin-popup" onclick="location.href='formlogin'">Login</button>
+        </nav>
+    </header>
+    <nav class="navigation" id="navbar">
+    </nav>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - Fandi Prasetyo
+        </div>
+    </footer>
+    </body>
+</html>

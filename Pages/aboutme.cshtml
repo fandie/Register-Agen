@@ -1,0 +1,66 @@
+﻿@page
+@model Register_Agen.Pages.aboutmeModel
+@{
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>About Me</title>
+    <link rel="stylesheet" href="/css/aboutme.css">
+</head>
+
+<body>
+    <div class="about-container">
+        <h1>Tentang Saya</h1>
+
+        <section id="profile">
+            <h2>Profil Saya</h2>
+            <p>Nama: Fandi Prasetyo</p>
+            <p>Umur: 28 Tahun</p>
+            <p>Alamat: Jl Salak Putih Ciganjur Jagakarsa Jakarta Selatan 12630</p>
+        </section>
+
+        <section id="interests">
+            <h2>Minat Saya</h2>
+            <ul>
+                <li>Hobi 1: Badminton</li>
+                <li>Hobi 2: Desain Bangun Ruang(at Coohom, Google Scetchup dan Unity Engine)</li>
+                <li>Hobi 3: Analisis Data(at kaggle)</li>
+                <li>Hobi 4: Gaming</li>
+            </ul>
+        </section>
+
+        <section id="education">
+            <h2>Pendidikan</h2>
+            <p>Tingkat Pendidikan: Strata 1</p>
+            <p>Program Studi: Teknik Informatika</p>
+            <p>Institusi: Universitas Pembangunan Nasional Veteran Jakarta</p>
+            <p>Tahun Lulus: 2019</p>
+        </section>
+
+        <section id="contact">
+            <h2>Kontak</h2>
+            <p>Email: fandiprasetyo@hotmail.com</p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/fandi-prasetyo/">[Fandi Prasetyo]</a></p>
+            <p>Portofolio: <a href="https://www.kaggle.com/fandipras/Code">[Fandi Prasetyo]</a></p>
+        </section>
+
+        <button onclick="location.href='Index'">Kembali ke Home</button>
+    </div>
+
+    <script>
+        function goToHome() {
+            // Ganti URL berikut dengan URL halaman utama Anda
+            window.location.href = "halaman-utama.html";
+        }
+
+        function goToContactMe() {
+            // Ganti URL berikut dengan URL halaman "Contact Me" Anda
+            window.location.href = "contact-me.html";
+        }
+    </script>
+</body>
+</html>

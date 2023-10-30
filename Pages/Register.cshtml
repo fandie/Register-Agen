@@ -1,0 +1,375 @@
+﻿@page
+@model Register_Agen.Pages.RegisterModel
+@{
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Registrasi</title>
+    <link rel="stylesheet" href="~/css/Register.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+</head>
+
+
+<body>
+    <form id="registrationForm" method="post">
+    <div class="form-box">
+        <!-- Form Registrasi -->
+
+        <div class="register-container" id="register">
+            <div class="top">
+                <p>Have an Account ?<a href="formlogin" class="register-link">Login</a></p>
+            </div>
+
+
+            <h2>Formulir Data Diri</h2>
+
+
+            <div class="input-box">
+                <input asp-for="Registration.Name" type="text" class="input-field" placeholder="Name" required>
+            </div>
+            <!-- Jenis Kelamin -->
+            <label for="gender">Jenis Kelamin:</label>
+            <select asp-for="Registration.Gender" class="input-field" required>
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="Perempuan">Perempuan</option>
+            </select>
+
+            <!-- Tempat Lahir -->
+            <div class="input-box">
+                <input asp-for="Registration.BirthPlace" class="input-field" placeholder="Tempat Lahir" required>
+            </div>
+
+            <!-- Tanggal Lahir -->
+            <div class="Input-box">
+                <label for="BirthDate">Tanggal Lahir</label>
+                <div class="col-sm-6"></div>
+                <input type="text" class="form-control" id="date-input" placeholder="YYYY-MM-DD" required>
+                <div class="input-group-append">
+                </div>
+            </div>
+
+
+            <!-- Alamat -->
+            <div class="input-box">
+                <input asp-for="Registration.Address" class="input-field" placeholder="Alamat" required>
+            </div>
+
+            <!-- Email -->
+            <div class="input-box">
+                <input asp-for="Registration.Email" class="input-field" placeholder="Email" required>
+            </div>
+
+            <!-- ID/Username -->
+            <div class="input-box">
+                <input asp-for="Registration.Username" class="input-field" placeholder="ID/Username" required>
+            </div>
+
+            <!-- Password Strength Bar -->
+            <div class="input-box">
+                <input asp-for="Registration.Password" id="password" class="input-field" type="password" placeholder="Password" oninput="checkPasswordStrength(this.value)" required>
+                <div class="password-strength">
+                    <div class="password-bar"></div>
+                    <div class="password-info">Kekuatan Password:<br><span id="info-text">...</span></div>
+                </div>
+            </div>
+
+            <br>
+            <!-- No Handphone -->
+            <div class="input-box">
+                <input id="phoneInput" class="input-field" placeholder="No Handphone" required>
+            </div>
+
+            <!-- No KTP -->
+            <div class="input-box">
+                <input id="idCardInput" class="input-field" placeholder="No KTP" required>
+            </div>
+
+     <!------- Riwayat Pendidikan --------->
+            <h2>Riwayat Pendidikan</h2>
+
+
+                <!-- Tingkat Pendidikan -->
+                <label for="tingkat">Tingkat Pendidikan:</label>
+                    <select asp-for="Registration.Strata" class="input-field" required>
+                        <option value="SMA">SMA</option>
+                        <option value="D3">D3</option>
+                        <option value="S1">S1</option>
+                        <option value="S2">S2</option>
+                        <option value="S3">S3</option>
+                    </select>
+
+                <!-- Nama Institusi Pendidikan -->
+                <div class="input-box">
+                    <input asp-for="Registration.Institution" class="input-field" placeholder="Nama Sekolah/Universitas" required>
+                </div>
+
+                <!-- Jurusan -->
+                <div class="input-box">
+                    <input asp-for="Registration.Major" class="input-field" placeholder="Jurusan" required>
+                </div>
+
+                <!-- Nilai/IPK -->
+                <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label">Nilai IPK/GPA</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="input-field form-control" id="gpa-input" placeholder="0.00" required>
+                    </div>
+                </div>
+
+                <!-- Tahun Masuk -->
+                <label for="masuk sekolah">Tahun Masuk:</label>
+                <div class="input-box">
+                    <div class="col-sm-6"></div>
+                    <input type="text" class="form-control" id="start-date-input" placeholder="YYYY-MM-DD" required>
+                </div>
+
+                <!-- Tahun Lulus -->
+                <label for="lulus sekolah">Tahun Lulus:</label>
+                <div class="input-box">
+                    <div class="col-sm-6"></div>
+                    <input type="text" class="form-control" id="end-date-input" placeholder="YYYY-MM-DD" required>
+                </div>
+
+            
+            <!-- Riwayat Kerja -->
+                <h2>Riwayat Pekerjaan</h2>
+
+
+                <!-- Input untuk Perusahaan -->
+                <div class="input-box">
+                        <input asp-for="Registration.Company" class="input-field" placeholder = "Nama Perusahaan Saat ini/Sebelumnya" required>
+                </div>
+
+                <!-- Input untuk Bidang -->
+                    <label for="Field">Bidang</label>
+                    <select asp-for="Registration.Field" class="input-field" required>
+                        <option value="Teknologi Informasi (TI)">Teknologi Informasi (TI)</option>
+                        <option value="Kesehatan dan Kedokteran">Kesehatan dan Kedokteran</option>
+                        <option value="Keuangan">Keuangan</option>
+                        <option value="Pendidikan">Pendidikan</option>
+                        <option value="Bisnis dan Manajemen">Bisnis dan Manajemen</option>
+                        <option value="Ilmu Pengetahuan dan Riset">Ilmu Pengetahuan dan Riset</option>
+                        <option value="Seni dan Desain">Seni dan Desain</option>
+                        <option value="Hiburan dan Media">Hiburan dan Media</option>
+                        <option value="Pariwisata dan Perhotelan">Pariwisata dan Perhotelan</option>
+                        <option value="Sains Sosial dan Manusia">Sains Sosial dan Manusia</option>
+                        <option value="Layanan Publik dan Pemerintahan">Layanan Publik dan Pemerintahan</option>
+                        <option value="Lingkungan dan Keberlanjutan">Lingkungan dan Keberlanjutan</option>
+                    </select>
+
+                <!-- Input untuk Posisi -->
+                <div class="input-box">
+                        <input asp-for="Registration.Position" placeholder="Posisi" required>
+                </div>
+
+                <!-- Input untuk tahun masuk -->
+                    <label for="tahun masuk">Tahun Masuk:</label>
+                    <div class="input-box">
+                        <div class="col-sm-6"></div>
+                        <input type="text" class="form-control" id="work-start-date-input" placeholder="YYYY-MM-DD" required>
+                    </div>
+
+                <!-- Input untuk tahun keluar -->
+                    <label for="tahun keluar">Tahun Keluar:</label>
+                    <div class="input-box">
+                        <div class="col-sm-6"></div>
+                        <input type="text" class="form-control" id="work-end-date-input" placeholder="YYYY-MM-DD" required>
+                    </div>
+
+                <!-- Input untuk Job Desk -->
+                <div>    
+                <label for="Job Desk">Job Desk:</label>
+                    <br>
+                        <textarea asp-for="Registration.JobDesc" rows="4" cols="100"  class="input-field" required></textarea>
+                <div>
+
+        <!-------------- Lampiran --------------------->
+        <br>
+        <h2>Lampiran Dokumen</h2>
+                        <br>
+
+
+                        <!-- Input untuk Attachment Type -->
+                    <label for="Tipe Attachment">Tipe Lampiran</label>
+                    <select asp-for="Registration.AttachmentType" class="input-field" required>
+                        <option value="CV/Resume">CV/Resume</option>
+                        <option value="Ijazah">Ijazah</option>
+                        <option value="Sertifikat">Sertifikat</option>
+                    </select>
+
+                <!-- Input untuk Tipe File -->
+                    <label for="Tipe File">Tipe File</label>
+                    <select asp-for="Registration.AttachmentType" class="input-field" required>
+                        <option value=".doc">.doc</option>
+                        <option value=".docx">.docx</option>
+                        <option value=".pdf">.pdf</option>
+                    </select>
+
+            <!-- Input untuk Nama File -->
+            <div class="input-box">
+                <input asp-for="Registration.FileName" id="file-name" name="Attachment.FileName" class="input-field" placeholder="Nama File" required>
+            </div>
+
+            <!-- Input untuk Resume/CV -->
+            <div>
+                <input asp-for="Registration.FilePath" type="file" id="file-attachment" name="Attachment.FileData" accept=".doc, .docx, .pdf" required>
+                <div>
+                    <small class="file-info">File types allowed: .doc, .docx, .pdf</small>
+                    </div>
+            </div>
+            <br>
+                        <br>
+
+            <!-- Tombol Submit -->
+            <div class="row mb-3">
+                <div class="offset-sm-3 col-sm-3 d-grid">
+                    <a class="btn btn-outline-primary" href="javascript:void(0);" onclick="resetForm();" role="button">Reset</a>
+                    </div>
+                    <div class="col-sm-3 d-grid">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        </div>
+
+                </div>
+                </div>
+           
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+
+<script>
+    function checkPasswordStrength(password) {
+        const passwordBar = document.querySelector(".password-bar");
+        const infoText = document.getElementById("info-text");
+        const strongRegex = new RegExp(
+            "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{10,})"
+        );
+        const mediumRegex = new RegExp(
+            "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})"
+        );
+        const weakRegex = new RegExp("^(?=.*[a-zA-Z0-9])(?=.{8,})");
+
+        if (password.length === 0) {
+            passwordBar.style.width = "0";
+            passwordBar.className = "password-bar password-bar-white";
+            infoText.textContent = "Panjang password minimal 8 karakter.";
+        } else if (strongRegex.test(password)) {
+            passwordBar.style.width = "100%";
+            passwordBar.className = "password-bar password-bar-green";
+            infoText.textContent = "Password kuat!";
+        } else if (mediumRegex.test(password)) {
+            passwordBar.style.width = "75%";
+            passwordBar.className = "password-bar password-bar-yellow";
+            infoText.textContent = "Password cukup kuat.";
+        } else if (weakRegex.test(password)) {
+            passwordBar.style.width = "50%";
+            passwordBar.className = "password-bar password-bar-red";
+            infoText.textContent = "Password lemah.";
+        } else {
+            passwordBar.style.width = "25%";
+            passwordBar.className = "password-bar password-bar-red";
+            infoText.textContent = "Password sangat lemah.";
+        }
+    }
+</script>
+
+<script>
+    const phoneInput = document.getElementById("phoneInput");
+
+    phoneInput.addEventListener("input", function () {
+        // Hapus karakter non-angka
+        phoneInput.value = phoneInput.value.replace(/\D/g, "");
+
+        // Batasi maksimal 12 digit
+        if (phoneInput.value.length > 12) {
+            phoneInput.value = phoneInput.value.slice(0, 12);
+        }
+    });
+
+    const idCardInput = document.getElementById("idCardInput");
+
+    idCardInput.addEventListener("input", function () {
+        // Hapus karakter non-angka
+        idCardInput.value = idCardInput.value.replace(/\D/g, "");
+
+        // Batasi panjang tepat 16 digit
+        if (idCardInput.value.length !== 16) {
+            idCardInput.value = idCardInput.value.slice(0, 16);
+        }
+    });
+
+    $(document).ready(function () {
+        $('#date-input, #start-date-input, #end-date-input, #work-start-date-input, #work-end-date-input').on('input', function () {
+            var inputValue = $(this).val();
+            // Hapus karakter non-angka
+            inputValue = inputValue.replace(/\D/g, '');
+
+            // Batasi panjang input menjadi 8 karakter
+            if (inputValue.length > 8) {
+                inputValue = inputValue.substring(0, 8);
+            }
+
+            // Format input ke YYYY-MM-DD
+            inputValue = inputValue.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');
+
+            $(this).val(inputValue);
+        });
+    });
+
+    $(document).ready(function () {
+        $('#gpa-input').on('input', function () {
+            var inputValue = $(this).val();
+            // Hapus karakter selain angka dan titik desimal
+            inputValue = inputValue.replace(/[^\d.]/g, '');
+
+            // Batasi angka hingga 3 digit di depan tanda desimal
+            var decimalParts = inputValue.split('.');
+            if (decimalParts[0] && decimalParts[0].length > 3) {
+                decimalParts[0] = decimalParts[0].substring(0, 3);
+                inputValue = decimalParts.join('.');
+            }
+
+            // Batasi angka desimal hingga 2 digit di belakang koma
+            if (decimalParts[1] && decimalParts[1].length > 2) {
+                decimalParts[1] = decimalParts[1].substring(0, 2);
+                inputValue = decimalParts.join('.');
+            }
+
+            $(this).val(inputValue);
+        });
+    });
+</script>
+
+<script>
+    function resetForm() {
+        const form = document.getElementById('registrationForm');
+
+        const inputElements = form.getElementsByTagName('input');
+        const textareaElements = form.getElementsByTagName('textarea');
+
+        for (let i = 0; i < inputElements.length; i++) {
+            inputElements[i].value = '';
+        }
+
+        // Atur nilai semua elemen textarea kembali ke nilai awalnya (biasanya kosong)
+        for (let i = 0; i < textareaElements.length; i++) {
+            textareaElements[i].value = '';
+        }
+    }
+</script>

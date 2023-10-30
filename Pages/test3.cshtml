@@ -1,0 +1,63 @@
+﻿@page
+@model Register_Agen.Pages.test3Model
+@{
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temukan Pasangan Elemen</title>
+    <link rel="stylesheet" type="text/css" href="~/css/test3.css" />
+</head>
+<body>
+    <div class="top">
+    <div class="test-container" id="test">
+    <header>Test Nomor 3</header>
+    <h1>Cari Pasangan Elemen</h1>
+    <p>Masukkan bilangan target dan elemen-elemen array di bawah:</p>
+    </div>
+    <input type="text" id="targetInput" placeholder="Target">
+    <input type="text" id="arrayInput" placeholder="Array (pisahkan dengan koma)">
+    <button onclick="findPair()">Cari Pasangan</button>
+    <p>Hasil:</p>
+    <p id="result"></p>
+    <button onclick="resetFields()">Reset</button>
+    <a href="/">Kembali ke Home</a>
+
+    <script>
+        function findPair() {
+            const target = parseInt(document.getElementById("targetInput").value);
+            const arrayInput = document.getElementById("arrayInput").value;
+            const array = arrayInput.split(',').map(Number);
+            const indices = findIndicesOfSum(array, target);
+
+            if (indices) {
+                document.getElementById("result").textContent = `Pasangan elemen dengan indeks ${indices[0]} dan ${indices[1]} memiliki jumlah ${target}.`;
+            } else {
+                document.getElementById("result").textContent = "Tidak ada pasangan elemen yang sesuai.";
+            }
+        }
+
+        function findIndicesOfSum(array, target) {
+            const map = {};
+            for (let i = 0; i < array.length; i++) {
+                const complement = target - array[i];
+                if (map[complement] !== undefined) {
+                    return [map[complement], i];
+                }
+                map[array[i]] = i;
+            }
+            return null;
+        }
+
+        function resetFields() {
+            document.getElementById("targetInput").value = "";
+            document.getElementById("arrayInput").value = "";
+            document.getElementById("result").textContent = "";
+        }
+    </script>
+    </div>
+</body>
+</html>
+

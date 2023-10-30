@@ -1,0 +1,158 @@
+﻿/*Data Diri*/
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.form-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    z-index:2;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('../aset/Greenbg.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+.register-container {
+    width: 800px;
+    display:table;
+    flex-direction: column;
+    transition: 0.5s ease-in-out;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.8); /* Background color with transparency */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.top {
+    margin-left: 20px 0;
+    color: #000000;
+    margin-left: 5px;
+    font-size: medium;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.register-container .h2 {
+    font-size: 50px;
+    text-align: center;
+    padding: 10px 0 30px 0;
+    color: #000000;
+}
+
+.register-container input[type="text"],
+.register-container input[type="email"],
+.register-container input[type="password"],
+.register-container input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.register-container .password-input-box {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.register-container .label-password {
+    margin: 5px 0;
+}
+
+.register-container .password-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex-direction: column;
+}
+
+.register-container .password-strength {
+    display: flow;
+    align-items: center;
+}
+
+.register-container .password-bar {
+    height: 5px;
+    width: 0;
+    border-radius: 5px;
+}
+
+.register-container .password-info {
+    display: flex;
+    position: center;
+    font-size: 14px;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.register-container .password-bar-white {
+    background-color: white;
+}
+
+.register-container .password-bar-red {
+    background-color: red;
+}
+
+.register-container .password-bar-yellow {
+    background-color: yellow;
+}
+
+.register-container .password-bar-green {
+    background-color: green;
+}
+
+
+.register-container .bar {
+    width: 25%;
+    height: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    position: relative;
+}
+
+    .register-container .bar #bar-progress {
+        height: 100%;
+        width: 0;
+        border-radius: 5px;
+        transition: width 0.3s;
+    }
+
+/* Password Strength Colors */
+    .register-container .bar .white {
+        background-color: #fff;
+    }
+
+    .register-container .bar .red {
+        background-color: #ff4747;
+    }
+
+    .register-container .bar .yellow {
+        background-color: #ffd900;
+    }
+
+    .register-container .bar .green {
+        background-color: #50c878;
+    }
